@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-
+import { io } from '../app.js'; 
 
 const productosFilePath = path.resolve('data', 'productos.json');
 
@@ -47,6 +47,7 @@ export default class ProductManager {
         }
         this.products.push(newProduct);
         this.saveToFile();
+        io.emit('updateProducts', this.products); 
         return newProduct;
     }
 
@@ -61,6 +62,7 @@ export default class ProductManager {
         };
         this.products[productIndex] = updatedProduct;
         this.saveToFile();
+        io.emit('updateProducts', this.products);
         return updatedProduct;
     }
 
@@ -72,7 +74,7 @@ export default class ProductManager {
         const deletedProduct = this.products.splice(productIndex, 1);
 
         this.saveToFile();
-
+        io.emit('updateProducts', this.products);
         return deletedProduct[0];
     }
 
