@@ -4,12 +4,12 @@ import { Server } from 'socket.io';
 import { engine } from 'express-handlebars';
 
 import productsRouter from './routes/products.router.js';
-import cartsRouter from './routes/carts.js';  // Importa el router de carritos
+import cartsRouter from './routes/carts.js';
 
-import ProductManager from './services/ProductManager.js'; // Asegúrate que existe
+import ProductManager from './services/ProductManager.js';
 
 const app = express();
-const PORT = 8080;  // Cambié el puerto a 8080 según las especificaciones
+const PORT = 8080; 
 
 // Configuración de Handlebars
 app.engine('handlebars', engine());
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rutas
 app.use('/api/products', productsRouter);
-app.use('/api/carts', cartsRouter);  // Usa el router de carritos
+app.use('/api/carts', cartsRouter);
 
 
 // Rutas de vistas
@@ -33,12 +33,11 @@ app.use('/api/carts', cartsRouter);  // Usa el router de carritos
 //   res.render('home', { products: [] }); // Inicialmente vacío
 // });
 
-const productManager = new ProductManager();
-
-app.get('/', async (req, res) => {
-  const products = await productManager.getAllProducts(); // Obtiene los productos
-  res.render('home', { products }); // Los pasa a la vista
-});
+ const productManager = new ProductManager();
+ app.get('/', async (req, res) => {
+   const products = await productManager.getAllProducts(); // Obtiene los productos
+   res.render('home', { products }); // Los pasa a la vista
+ });
 
 app.get('/realtimeproducts', (req, res) => {
   res.render('realTimeProducts');

@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-})
+})    
 
 
 
@@ -94,24 +94,39 @@ router.delete('/:pid', async (req, res) => {
     }
 });
 
+
+
+
+// Ruta principal que renderiza la vista con los productos
+router.get('/r', async (req, res) => {
+    try {
+    const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
+      const products = await productManager.getAllProducts(limit); // Obtener productos
+      res.render('home', { products }); // Renderizar la vista con los productos
+    } catch (error) {
+      console.error('Error al obtener productos:', error);
+      res.status(500).send('Error interno del servidor');
+    }
+  });
+
 export default router
 
 
-// Ejemplo para el Carrito
-const carts = [
-    {
-        userId: 1,
-        products: [
-            { id: 1, quantity: 2 },
-            { id: 2, quantity: 1 },
-        ],
-    },
-    {
-        userId: 2,
-        products: [
-            { id: 1, quantity: 3 },
-            { id: 3, quantity: 1 },
-        ],
-    },
-    //... more carts...
-]
+// // Ejemplo para el Carrito
+// const carts = [
+//     {
+//         userId: 1,
+//         products: [
+//             { id: 1, quantity: 2 },
+//             { id: 2, quantity: 1 },
+//         ],
+//     },
+//     {
+//         userId: 2,
+//         products: [
+//             { id: 1, quantity: 3 },
+//             { id: 3, quantity: 1 },
+//         ],
+//     },
+//     //... more carts...
+// ]

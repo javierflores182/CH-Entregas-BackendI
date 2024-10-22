@@ -96,5 +96,33 @@
       "https://example.com/images/camiseta2.jpg"
     ],
     "status": true
+  },
+  {
+    "id": 9,
+    "title": "Camiseta Deportiva 182",
+    "description": "Camiseta de material transpirable y ligero.",
+    "code": "CAM01",
+    "price": 19.99,
+    "stock": 100,
+    "category": "Ropa Deportiva",
+    "thumbnails": [
+      "https://example.com/images/camiseta1.jpg",
+      "https://example.com/images/camiseta2.jpg"
+    ],
+    "status": true
+  },
+  {
+    "id": 10,
+    "title": "Camiseta Deportiva 182",
+    "description": "Camiseta de material transpirable y ligero.",
+    "code": "CAM01",
+    "price": 19.99,
+    "stock": 100,
+    "category": "Ropa Deportiva",
+    "thumbnails": [
+      "https://example.com/images/camiseta1.jpg",
+      "https://example.com/images/camiseta2.jpg"
+    ],
+    "status": true
   }
 ]
